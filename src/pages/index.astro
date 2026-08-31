@@ -6,7 +6,7 @@ import { setCache } from "../utils/cache";
 
 const title = "Astro + Shopify";
 const headers = Astro.request.headers;
-const ip = headers.get("x-vercel-forwarded-for") || Astro.clientAddress;
+const ip = headers.get("cf-connecting-ip") || Astro.clientAddress;
 const products = await getProducts({ buyerIP: ip });
 
 setCache.short(Astro);
